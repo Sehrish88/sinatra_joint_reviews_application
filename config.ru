@@ -6,4 +6,5 @@ end
 #in order to get patch and DELETE requests, i will need to add a line of code here
 use Rack::MethodOverride 
 #here is where I will mount other controllers with use
+use UsersController
 run ApplicationController

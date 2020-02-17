@@ -21,11 +21,27 @@ class UsersController < ApplicationController
 
 
 #routes needed for signup
+#This route's job is to render the signup form
   get '/signup' do
-
+    erb :signup
   end 
+
+  post '/users' do
+    binding.pry
+    #This is where we create and persist the new user to the database
+    #params will look like this:{"Name"=>"Jeff", "Partner Name"=>"Lizzie", "Email"=>"jeff@bobmail.com", "Password"=>"ohweuf80h3b"}
+    if params[:Name] != "" && params[:Partner Name] != "" && params[:Email] != "" && params[:password] != ""
+    @user = User.create(params)
+    #go to the user show page 
+    redirect "/users/#{@user.id}"
+  
+    else  
+      
+    end
+  end 
+
   #user show route
   get '/users/:id' do 
-    "this will be the user show route"
+    erb :'/users/show'
   end 
 end 

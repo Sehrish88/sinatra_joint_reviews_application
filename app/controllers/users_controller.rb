@@ -27,17 +27,24 @@ class UsersController < ApplicationController
   end 
 
   post '/users' do
-    binding.pry
-    #This is where we create and persist the new user to the database
+    #binding.pry
+    #This is where I create and persist the new user to the database
     #params will look like this:{"Name"=>"Jeff", "Partner Name"=>"Lizzie", "Email"=>"jeff@bobmail.com", "Password"=>"ohweuf80h3b"}
-    if params[:Name] != "" && params[:Partner Name] != "" && params[:Email] != "" && params[:password] != ""
-    @user = User.create(params)
+    #if params[:name] != "" && params[:partner_name] != "" && params[:email] != "" && params[:password] != ""
+    #@user = User.create(params)
+    binding.pry
+    @user = User.new(name: params["name"])
+    @user.partner_name = params["partner_name"]
+    @user.email = params["email"]
+    @user.password = params["password"]
+    @user.save
+     binding.pry 
     #go to the user show page 
-    redirect "/users/#{@user.id}"
-  
-    else  
-      
-    end
+     redirect "/users/#{@user.id}"
+   #else  
+    #not valid input
+    
+    #end
   end 
 
   #user show route

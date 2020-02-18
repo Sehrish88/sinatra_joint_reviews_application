@@ -33,13 +33,9 @@ class UsersController < ApplicationController
     #if params[:name] != "" && params[:partner_name] != "" && params[:email] != "" && params[:password] != ""
     #@user = User.create(params)
     binding.pry
-    @user = User.new(name: params["name"])
-    @user.partner_name = params["partner_name"]
-    @user.email = params["email"]
-    @user.password = params["password"]
-    @user.save
-     binding.pry 
-    #go to the user show page 
+    @user = User.create(name: params["name"], partner_name: params["partner_name"], email: params["email"], password: params["password"])
+    
+   #go to the user show page 
      redirect "/users/#{@user.id}"
    #else  
     #not valid input

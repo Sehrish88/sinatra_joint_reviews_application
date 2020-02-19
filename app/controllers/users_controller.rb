@@ -34,11 +34,11 @@ class UsersController < ApplicationController
     #@user = User.create(params)
     binding.pry
     @user = User.create(name: params["name"], partner_name: params["partner_name"], email: params["email"], password: params["password"])
-    
+    session[:user_id] = @user.id
    #go to the user show page 
      redirect "/users/#{@user.id}"
     else  
-    #not valid input
+    redirect '/signup'
     
     end
   end 
@@ -47,6 +47,12 @@ class UsersController < ApplicationController
   get '/users/:id' do 
     #binding.pry
     @user = User.find_by(id: params[:id])
+
     erb :'/users/show'
+  end 
+
+  get '/logout' do
+    session.clear
+    redirect '/'
   end 
 end 

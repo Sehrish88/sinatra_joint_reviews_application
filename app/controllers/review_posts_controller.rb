@@ -16,9 +16,10 @@ class ReviewPostsController < ApplicationController
 
        if params[:content] != ""
          @review_post = ReviewPost.create(content: params[:content], user_id: current_user.id )
-         redirect '/review_posts'
+         binding.pry 
+         redirect "/review_posts/#{@review_post.user.id}"
        else
-        redirect "/review_posts/new/#{review_post.id}"
+        redirect 'review_post/new'
 
        end 
      

@@ -55,4 +55,9 @@ class UsersController < ApplicationController
     session.clear
     redirect '/'
   end 
+
+  get '/home' do
+    redirect '/'
+  end 
+
 end 

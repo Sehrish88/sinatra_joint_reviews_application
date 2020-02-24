@@ -17,7 +17,7 @@ class ReviewPostsController < ApplicationController
        if params[:content] != ""
          @review_post = ReviewPost.create(content: params[:content], user_id: current_user.id )
          #binding.pry 
-         redirect "/review_posts/#{@review_post.user.id}"
+         redirect "/review_posts/#{@review_post.id}"
        else
         redirect 'review_post/new'
 
@@ -28,8 +28,8 @@ class ReviewPostsController < ApplicationController
 
     #show page for review entry 
     get '/review_posts/:id' do
-     @review_posts = ReviewPost.all
-     erb :"/review_posts/index" 
+     @review_posts = ReviewPost.find(params[:id])
+     erb :"/review_posts/show" 
     end 
     #index route for all journal entries 
 end 

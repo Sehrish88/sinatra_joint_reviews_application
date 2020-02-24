@@ -16,7 +16,7 @@ class ReviewPostsController < ApplicationController
 
        if params[:content] != ""
          @review_post = ReviewPost.create(content: params[:content], user_id: current_user.id )
-         binding.pry 
+         #binding.pry 
          redirect "/review_posts/#{@review_post.user.id}"
        else
         redirect 'review_post/new'
@@ -27,7 +27,7 @@ class ReviewPostsController < ApplicationController
    
 
     #show page for review entry 
-    get '/review_posts' do
+    get '/review_posts/:id' do
      @review_posts = ReviewPost.all
      erb :"/review_posts/index" 
     end 

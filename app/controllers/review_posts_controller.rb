@@ -31,5 +31,9 @@ class ReviewPostsController < ApplicationController
      @review_posts = ReviewPost.find(params[:id])
      erb :"/review_posts/show" 
     end 
-    #index route for all journal entries 
+    
+    #this route should send us to review_posts/edit.erb, which should render a review form
+    get '/review_posts/:id/edit' do
+      erb :'/review_posts/edit'
+    end 
 end 

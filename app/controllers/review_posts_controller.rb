@@ -19,7 +19,7 @@ class ReviewPostsController < ApplicationController
          #binding.pry 
          redirect "/review_posts/#{@review_post.id}"
        else
-        redirect 'review_post/new'
+        redirect 'review_posts/new'
 
        end 
      
@@ -28,12 +28,30 @@ class ReviewPostsController < ApplicationController
 
     #show page for review entry 
     get '/review_posts/:id' do
-     @review_posts = ReviewPost.find(params[:id])
+     set_review_post
      erb :"/review_posts/show" 
     end 
     
     #this route should send us to review_posts/edit.erb, which should render a review form
     get '/review_posts/:id/edit' do
+      set_review_post
       erb :'/review_posts/edit'
     end 
+   
+    #This action finds the review_post and modifies/updates the revoew_post and then redirects to showpage 
+    patch '/review_posts/:id/' do
+      set_review_post
+      #binding.pry
+      @review_post.update(content: params[:content])
+      redirect "review_posts/#{@review_post.id}" 
+    end 
+
+    private 
+
+    def set_review_post
+      @review_post = ReviewPost.find(params[:id])
+    end 
+ 
+    
+
 end 

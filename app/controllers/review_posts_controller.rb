@@ -35,15 +35,30 @@ class ReviewPostsController < ApplicationController
     #this route should send us to review_posts/edit.erb, which should render a review form
     get '/review_posts/:id/edit' do
       set_review_post
+      if logged_in?
+        if @review_post.user == current_user
       erb :'/review_posts/edit'
+        else 
+          redirect "users/#{current_user.id}"
+        end 
+      else 
+        redirect '/'
+      end 
     end 
    
     #This action finds the review_post and modifies/updates the revoew_post and then redirects to showpage 
     patch '/review_posts/:id/' do
       set_review_post
-      #binding.pry
-      @review_post.update(content: params[:content])
-      redirect "review_posts/#{@review_post.id}" 
+      if logged_in?
+        if @review_post.user == current_user
+        @review_post.update(content: params[:content])
+        redirect "review_posts/#{@review_post.id}" 
+       else 
+        redirect "users/#{current_user.id}"
+       end 
+      else 
+       redirect '/'
+      end 
     end 
 
     private 

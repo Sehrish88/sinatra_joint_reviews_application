@@ -17,6 +17,10 @@ class ApplicationController < Sinatra::Base
     end 
   end
 
+  get '/review_posts' do
+    erb :'review_posts/index'
+  end
+
   helpers do
     def logged_in?
       !!current_user 
@@ -25,6 +29,8 @@ class ApplicationController < Sinatra::Base
     def current_user
      @current_user ||= User.find_by(id: session[:user_id]) 
     end
+
+    
 
   end
 

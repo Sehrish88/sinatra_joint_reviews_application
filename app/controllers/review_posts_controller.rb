@@ -1,4 +1,9 @@
 class ReviewPostsController < ApplicationController
+
+    get 'review_posts' do 
+      @review_posts = ReviewPost.all 
+      erb :'review_posts/index'
+    end 
     #get review_posts/new to render a form to create new review post
     get '/review_posts/new' do
         erb :'/review_posts/new'

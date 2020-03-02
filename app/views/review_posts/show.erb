@@ -8,7 +8,12 @@
 
 
 <h6><p>Created by: <%=@review_post.user.name %> and <%=@review_post.user.partner_name %> </p></h6>
-<% if current_user == @review_post.user %>
-<h6><a href="/review_posts/<%=@review_post.id%>/edit">Edit Post</a></h6> <h6>Delete</h6> 
+<% if current_user == @review_post.user %> 
+<h6><a href="/review_posts/<%=@review_post.id%>/edit">Edit Post</a>
+<br><br>
+<form class="" action="/review_posts/<%= @review_post.id %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" name="" value="Delete Post">
+</form>
 <% end %> 
 <div style="background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUPDxAVFRUVFRUVFRUVFRUVFRUVFRUXFxUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NFQ8PFSsZFR0rLSsrLSstKy03LSsrLSstLS0tLS0tLS0rLSstLSstLS0tKystNy0rLS0tLSs3NystLf/AABEIAKIBNwMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIDBv/EACMQAQEBAAAEBwEBAAAAAAAAAAABEQJBgcEhMVFxsdHwEgP/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIHBf/EABgRAQEBAQEAAAAAAAAAAAAAAAABQREx/9oADAMBAAIRAxEAPwDwAg8Z0NV1lYKJVqCEXEiaKuiLBCKlA9U1AVZU0BV0QBdNQBTRAUQBZVtZKKurKyoiiALqagDWlQAQAUEBRABAEUIAtSiCAAAAAAoqKAAKAAAAKgC6IoIoQCAgqmoCKgAuoAAQBUAAUBmEFGSCAoAAqAgqAKAKBAAFFQAAAAFBAAUQAWJAAFAEUVBQRFEFUICAoHWIqAkBQEBREAFBQRFoCgAAAoKgAACoAAAAAuAgqgABQAAAIALEtBAKAyqLREAAAggAKsRUAABQAABQgAAAAABAAABaiihDAFSqIIRQEBcVEFiUChgCACAAIKgCkAAAQUBFACACgQAIAAAAAAoAAKsMCIFKAAaAmqi0QSqii6JRBAFQAARUBSQIAigAAAAAABAFFRQQFARaAAooBUCkKgLAQFEAUQoLiAoaAIgAgigAAgQIKAUUAggBAABVTFNBBagKBAKCwACooCAtgAAaUAQ0ANFAAAAEBRlABAAVdQWAgqACgomN8PDpxCM4VbTQRFQAFFAMAARVRUUVAwAAAoAAAAAQVABZARBcMEQWQoIi4YCKYCgYAC4YBFnokazw/c0RmljWknqDOJY3/KU6sZFwiiYtCoECrRURcARcXCglDAAVMBFAAooMjUhYCC4CLw8/buyoJo1YAM0gCr6/ubIBFWfYCl8lz4oIjK+vtOwKNcE8L7d0/wBPr4BNReLn0SoCwn18Ioqutng5XzBmEWreXsgorIChyARq+U6/KXsAJFnn1AVFiAjVn7ozy6gA3xdkBD0QEpX/2Q==');">

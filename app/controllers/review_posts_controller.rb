@@ -66,6 +66,16 @@ class ReviewPostsController < ApplicationController
       end 
     end 
 
+    delete '/review_posts/:id' do 
+      set_review_post
+      if @review_post.user == current_user
+      @review_post.destroy
+      redirect '/review_posts' 
+      else 
+        redirect '/review_posts'
+      end 
+    end 
+
     private 
 
     def set_review_post

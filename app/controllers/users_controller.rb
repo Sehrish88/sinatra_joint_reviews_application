@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     #binding.pry
     #This is where I create and persist the new user to the database
     #params will look like this:{"Name"=>"Jeff", "Partner Name"=>"Lizzie", "Email"=>"jeff@bobmail.com", "Password"=>"ohweuf80h3b"}
-    if params[:name] != "" && params[:partner_name] != "" && params[:email] != "" && params[:password] != ""
+    if params[:name] != "" && params[:partner_name] != "" && params[:email] != "" && params[:password] != "" &&  User.find_by(email: params[:email]) == nil 
     @user = User.create(params)
     #binding.pry
     #@user = User.create(name: params["name"], partner_name: params["partner_name"], email: params["email"], password: params["password"])

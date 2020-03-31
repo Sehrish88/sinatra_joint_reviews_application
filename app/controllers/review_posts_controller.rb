@@ -14,7 +14,8 @@ class ReviewPostsController < ApplicationController
         #raise params.inspect 
       #create new review post and save it to db, but only if it has some content and if user is logged in
        if !logged_in?
-        redirect '/'
+        flash[:message] = "Please log in to make a review post"
+        redirect '/login'
        end 
 
        

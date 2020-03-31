@@ -8,13 +8,15 @@ class UsersController < ApplicationController
   post '/login' do
     #find and authenticate user, login user and redirect to user's landing page(dashboard) 
     @user = User.find_by(email: params[:email])
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       #log user in and redirect to dashboard/create a session
       session[:user_id] = @user.id #actually whats logging user in 
       puts session
       redirect "users/#{@user.id}"
-    else
+    else 
+      flash[:message] = "Invalid credentials, please enter correct username and password or signup"
       #tell user invalid credentials, redirect to login page 
+      redirect '/login'
     end
 
   end 

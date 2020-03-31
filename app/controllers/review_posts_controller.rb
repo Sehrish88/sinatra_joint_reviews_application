@@ -20,10 +20,12 @@ class ReviewPostsController < ApplicationController
        
 
        if params[:content] != ""
+        flash[:message] = "Review post successfully created!"
          @review_post = ReviewPost.create(content: params[:content], user_id: current_user.id )
          #binding.pry 
          redirect "/review_posts/#{@review_post.id}"
        else
+        flash[:message] = "Please fill out the content section correctly"
         redirect 'review_posts/new'
 
        end 
@@ -70,6 +72,7 @@ class ReviewPostsController < ApplicationController
       set_review_post
       if @review_post.user == current_user
       @review_post.destroy
+      flash[:message] = "Your post was successfully deleted"
       redirect '/review_posts' 
       else 
         redirect '/review_posts'

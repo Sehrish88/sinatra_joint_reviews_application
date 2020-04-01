@@ -2,7 +2,7 @@
 <% ReviewPost.all.each do |review_post| %>
  <h4><a href="review_posts/<%= review_post.id %>"><%= review_post.created_at %></a></h4>
  <br><br>
- <p><%= review_post.content %></p>
+ <p><h5><%= review_post.content %></h5></p>
  <p>By <%= review_post.user.name %> and <%= review_post.user.partner_name %></p>
 
   <br><br>

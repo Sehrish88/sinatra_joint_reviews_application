@@ -60,6 +60,7 @@ class ReviewPostsController < ApplicationController
       if logged_in?
         if @review_post.user == current_user
         @review_post.update(content: params[:content])
+        flash[:message] = "Sucessfuly updated post."
         redirect "review_posts/#{@review_post.id}" 
        else 
         redirect "users/#{current_user.id}"

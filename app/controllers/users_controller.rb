@@ -40,6 +40,7 @@ class UsersController < ApplicationController
    #go to the user show page 
      redirect "/users/#{@user.id}"
     else  
+      flash[:message] = "Please enter all credentials in the required fields to create a user"
     redirect '/signup'
     
     end

@@ -11,12 +11,11 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       #log user in and redirect to dashboard/create a session
       session[:user_id] = @user.id #actually whats logging user in 
-      puts session
       redirect "users/#{@user.id}"
     else 
       flash[:message] = "Invalid credentials, please enter correct username and password or signup"
       #tell user invalid credentials, redirect to login page 
-      redirect '/login'
+      redirect '/login' 
     end
 
   end 

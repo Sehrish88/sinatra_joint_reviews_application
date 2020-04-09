@@ -40,7 +40,7 @@ class ReviewPostsController < ApplicationController
      erb :"/review_posts/show" 
     end 
     
-    #this route should send us to review_posts/edit.erb, which should render a review form
+    #this route should send user to review_posts/edit.erb, which should render a review form
     get '/review_posts/:id/edit' do
       set_review_post
       if logged_in?
@@ -54,7 +54,7 @@ class ReviewPostsController < ApplicationController
       end 
     end 
    
-    #This action finds the review_post and modifies/updates the revoew_post and then redirects to showpage 
+    #This action finds the review_post and modifies/updates the review_post and then redirects to showpage 
     patch '/review_posts/:id/' do
       set_review_post
       if logged_in?

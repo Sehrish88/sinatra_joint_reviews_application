@@ -6,7 +6,12 @@ class ReviewPostsController < ApplicationController
     end 
     #get review_posts/new to render a form to create new review post
     get '/review_posts/new' do
+       if logged_in?
         erb :'/review_posts/new'
+       else 
+        flash[:message] = "You must first login or sign up to create a review post"
+        redirect '/login'
+       end 
     end 
 
     #post request to create new review post 

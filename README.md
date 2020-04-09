@@ -4,3 +4,4 @@ A simple applicatioin for posting restaurant reviews  that allows users to log i
 Getting Started
 To run this app, clone the repo and run bundle install. Then run shotgun to fire up a server. You should see the app running on localhost:9393.
 
+MIT license for code: https://opensource.org/licenses/MIT

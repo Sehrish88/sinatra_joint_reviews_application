@@ -21,11 +21,12 @@
       <a href="/home"><b>Home</b></a>
 
     </div>
+
+    <div class="wrapper">  
     <% if flash[:message] %>
     <h3><%= flash[:message] %></h3>
     <% end %>
-    <div class="wrapper">  
-
+    
         <%= yield %>
 
       <footer class="branding">

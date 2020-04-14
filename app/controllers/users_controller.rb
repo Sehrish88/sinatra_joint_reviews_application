@@ -31,7 +31,7 @@ class UsersController < ApplicationController
    
     #This is where I create and persist the new user to the database
     #params will look like this:{"Name"=>"Jeff", "Partner Name"=>"Lizzie", "Email"=>"jeff@bobmail.com", "Password"=>"ohweuf80h3b"}
-    if params[:name] != "" && params[:partner_name] != "" && params[:email] != "" && params[:password] != "" &&  User.find_by(email: params[:email]) == nil #?
+    if params[:name] != "" && params[:partner_name] != "" && params[:email] != "" && params[:password] != "" &&  User.find_by(email: params[:email]) == nil 
     @user = User.create(params)
     session[:user_id] = @user.id
    #go to the user show page 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   #user show route
   get '/users/:id' do 
-    #binding.pry
+
     @user = User.find_by(id: params[:id])
 
     erb :'/users/show'

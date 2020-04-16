@@ -32,7 +32,14 @@ class ReviewPostsController < ApplicationController
        end 
      
     end 
-   
+    
+    get '/review_posts/reviews' do 
+      
+      @reviews = current_user.review_posts 
+  
+      erb :'/review_posts/reviews'  
+
+    end 
 
     #show page for review entry 
     get '/review_posts/:id' do
@@ -85,6 +92,8 @@ class ReviewPostsController < ApplicationController
      end
     end
     
+   
+     
 
   
    private 

@@ -1,6 +1,6 @@
 class ReviewPostsController < ApplicationController
 
-    get 'review_posts' do 
+    get '/review_posts' do 
       @review_posts = ReviewPost.all 
       erb :'review_posts/index'
     end 
